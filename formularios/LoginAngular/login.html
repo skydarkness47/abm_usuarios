@@ -1,0 +1,33 @@
+
+<center> <h1><font color="red">FORMULARIO LOGIN</font></h1>   </center>  
+
+
+    <form name="formIngreso" id="formIngreso" enctype="multipart/form-data" >
+  <link rel="stylesheet" href="./formularios/LoginAngular/css/style.css">
+
+  <input type="checkbox" ng-model="ver">
+<span>{{ver}}</span>
+       <p>
+        <input type="email" value="" placeholder="ingrese correo" ng-model="persona.email" required />
+        </p>
+         <p>
+        <input type="password" value="" placeholder="ingrese password" ng-model="persona.password" required  />
+        </p>
+        <p>
+          <input type="password" value="" placeholder="ingrese password" ng-model="persona.repetirpassword" required  />
+        </p>
+        <input type="button" id="Ingreso" ng-disabled='formIngreso.$invalid' class="button" ng-Click="Logueo()" name="Ingreso" value="ingreso" />
+        </div>
+
+        <p>
+        <input type="button" ng-Click="IraRegistro()"  class="button" name="registro" value="registro" />
+        </p>
+
+        </form>
+
+
+     
+    </div>
+
+ 
+  </section>
