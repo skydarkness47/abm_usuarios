@@ -68,11 +68,10 @@ class Usuario
 		return $arrUsuarios;
 	}
 	
-	public static function BorrarPersona($idParametro)
+	public static function BorrarUsuario($idParametro)
 	{	
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		//$consulta =$objetoAccesoDato->RetornarConsulta("delete from persona	WHERE id=:id");	
-		$consulta =$objetoAccesoDato->RetornarConsulta("CALL BorrarPersona(:id)");	
+		$consulta =$objetoAccesoDato->RetornarConsulta("delete from usuarios WHERE id=:id");	
 		$consulta->bindValue(':id',$idParametro, PDO::PARAM_INT);		
 		$consulta->execute();
 		return $consulta->rowCount();

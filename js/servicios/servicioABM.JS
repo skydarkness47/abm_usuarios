@@ -27,13 +27,13 @@ console.log(objeto);
 
     }
 
-   this.BorrarLocal = BorrarLocal;
-   function BorrarLocal(id){
+   this.Borrar = Borrar;
+   function Borrar(id){
     console.info(id);
-    return $http.delete(Url + "local/BorrarLocal/" + id) 
+    return $http.delete(Url + "user/borrar/" + id) 
     .then(function(respuesta) {
       console.info(respuesta);
-      return Grilla.TraerTodosLosLocales();
+      return Grilla.TraerTodosLosUsuarios();
     });
    };
 

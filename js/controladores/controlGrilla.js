@@ -6,9 +6,10 @@ console.info($scope.user);
 
 
  $scope.locales = {};
-$scope.BorrarLocal = function(row){
+$scope.Borrar = function(row){
+  console.info(row);
 
-factoryUsuario.BorrarLocal(JSON.stringify(row.id_local))
+factoryUsuario.Borrar(JSON.stringify(row.ID))
                 .then(function(respuesta) {
                   $scope.gridOptions.data= respuesta;
                     console.log(respuesta);
@@ -17,8 +18,8 @@ factoryUsuario.BorrarLocal(JSON.stringify(row.id_local))
 
 }
 
-$scope.ModificarLocal = function(row){
-factoryUsuario.ModificarLocal(JSON.stringify(row))
+$scope.Modificar = function(row){
+factoryUsuario.Borrar(JSON.stringify(row))
                 .then(function(respuesta) {
                   $scope.gridOptions.data= respuesta;
                     console.log(respuesta);
@@ -60,7 +61,12 @@ function columADM () {
   return [
           { field: 'ID', name: 'ID'},
 
-        { field: 'Usuario', name: 'Usuario'}
+        { field: 'Usuario', name: 'Usuario'},
+        { width: 100, cellTemplate:"<button ng-Click='grid.appScope.Modificar(row.entity)'>MODIFICAR", name:"MODIFICAR",enableCellEdit: false
+        },
+        { width: 100, cellTemplate:"<button ng-Click='grid.appScope.Borrar(row.entity)'>BORRAR", name:"BORRAR",enableCellEdit: false
+        }
+        ,
 
         ];
     

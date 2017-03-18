@@ -66,7 +66,7 @@ $usuarioBuscado=Usuario::TraerUnUsuario($user);
  
 });
 
-$app->delete('/usuarios/borrar/{objeto}', function ($request, $response, $args) {
+$app->delete('/user/borrar/{objeto}', function ($request, $response, $args) {
         
         $usuario=json_decode($args['objeto']);  
         

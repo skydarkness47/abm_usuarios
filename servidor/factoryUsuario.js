@@ -3,8 +3,8 @@ objeto = {};
    objeto.nombre = "factory de login y abm";
   objeto.InsertarLocal = InsertarLocal;
 objeto.TraerTodosLosUsuarios=TraerTodosLosUsuarios;
-objeto.BorrarLocal = BorrarLocal;
-objeto.ModificarLocal =ModificarLocal;
+objeto.Borrar = Borrar;
+objeto.Modificar =Modificar;
 
    return objeto;
 
@@ -22,14 +22,14 @@ objeto.ModificarLocal =ModificarLocal;
 
   }
 
-  function BorrarLocal(id)
+  function Borrar(id)
   {
-        return ABM.BorrarLocal(id);
+        return ABM.Borrar(id);
 
   }
- function ModificarLocal(local)
+ function Modificar(user)
   {
-        return ABM.ModificarLocal(local);
+        return ABM.Modificar(user);
 
   }
 
