@@ -3,12 +3,13 @@ input.ng-invalid{
 }
 
 input[type="text"],input[type="password"],input[type="email"]{
-
+width: 100%;
   display: block;
   color:black;
-  height: 3em;
- padding: 20px;
-  border: solid 1px #fff;
+  height: 5em;
+ padding: 40px;
+ border: 2px solid red;
+    border-radius: 4px;
   box-shadow: inset 1px 1px 2px 0 #707070;
   transition: box-shadow 0.3s;
 }

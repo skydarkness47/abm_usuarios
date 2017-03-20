@@ -14,8 +14,7 @@ $scope.Desloguear = function(){
 
  $scope.locales = {};
 $scope.Borrar = function(row){
-  console.info(row);
-
+  
 factoryUsuario.Borrar(JSON.stringify(row.ID))
                 .then(function(respuesta) {
                   $scope.gridOptions.data= respuesta;
@@ -26,7 +25,7 @@ factoryUsuario.Borrar(JSON.stringify(row.ID))
 }
 
 $scope.Modificar = function(row){
-factoryUsuario.Modificar(JSON.stringify(row))
+factoryUsuario.Modificar(angular.toJson(row))
                 .then(function(respuesta) {
                   $scope.gridOptions.data= respuesta;
                     console.log(respuesta);
@@ -48,8 +47,12 @@ $scope.locales = respuesta;
             $scope.gridOptions.enableFiltering = true;
         // Configuracion de la paginacion
        $scope.gridOptions.paginationPageSize = 25;
-    
+        if($scope.user.rol == "admin"){
           $scope.gridOptions.columnDefs = columADM();
+        }else if($scope.user.rol == "operador"){
+                    $scope.gridOptions.columnDefs = columOPE();
+
+        }
 
    $scope.gridOptions.enableFiltering = true;
     // Configuracion del idioma.
@@ -65,7 +68,7 @@ $scope.locales = respuesta;
 
 function columADM () {
   return [
-          { field: 'ID', name: 'ID'},
+          { field: 'ID', name: 'ID',enableCellEdit: false},
 
         { field: 'Usuario', name: 'Usuario'},
         { width: 100, cellTemplate:"<button ng-Click='grid.appScope.Modificar(row.entity)'>MODIFICAR", name:"MODIFICAR",enableCellEdit: false
@@ -80,4 +83,18 @@ function columADM () {
     }
 
   
+
+
+function columOPE () {
+  return [
+          { field: 'ID', name: 'ID',enableCellEdit: false},
+        { field: 'Usuario', name: 'Usuario'}        
+
+        ];
+    
+  
+    }
+
+  
 })
+

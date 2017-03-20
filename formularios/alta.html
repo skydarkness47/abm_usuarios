@@ -1,72 +1,59 @@
-
-    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-        <div class="container topnav">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                 
-                   <li>
-                           <a ng-Click="Desloguear()">Deslogueo</a>
-                    </li>
-
-
-                    <li>
-                        <a ui-sref="menu.grilla">GRILLA Y ABM</a>
-                    </li>
-
-
-                    <li>
-                        <a ui-sref="menu.alta">Alta</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-
-
-
-    <!-- Header -->
-
-
-    <a name="about"></a>
-
-    <div class="intro-header">
-
-        <div class="container">
-
-            <div class="row">
-                <div >
-                    <div class="intro-message">
+<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+<div class="container topnav">
+   <!-- Brand and toggle get grouped for better mobile display -->
+   <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+   </div>
+   <!-- Collect the nav links, forms, and other content for toggling -->
+   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+         <li>
+            <a ng-Click="Desloguear()">Deslogueo</a>
+         </li>
+         <li>
+            <a ui-sref="menu.grilla">GRILLA Y ABM</a>
+         </li>
+         <li>
+            <a ui-sref="menu.alta">Alta</a>
+         </li>
+      </ul>
+   </div>
+   <!-- /.navbar-collapse -->
+</div>
+<!-- /.container -->
+</nav>
+<!-- Header -->
+<a name="about"></a>
+<div class="intro-header">
+   <div class="container">
+      <div class="row">
+         <div >
+            <div class="intro-message">
+               <p>
+               <h1 style="color: #F7E9E6">ALTA DE USUARIO</h1>
+               <input type="text" value="" placeholder="ingrese usuario" ng-model="usuario.usuario" required />
+               </p>
+               <p>
+                  <input type="password" value="" placeholder="ingrese clave" ng-model="usuario.clave" required  />
+               </p>
                   <p>
-                     <h1 style="color: #F7E9E6">ALTA DE USUARIO</h1>
-                      
-        <input type="text" value="" placeholder="ingrese usuario" ng-model="usuario.usuario" required />
-        </p>
-         <p>
-        <input type="password" value="" placeholder="ingrese clave" ng-model="usuario.clave" required  />
-        </p>
-        <input type="button" id="Ingreso" ng-disabled='formIngreso.$invalid' class="button" ng-Click="Alta()" name="Alta" value="ingreso" />
-        </div>
-                        </ul>
-                    </div>
-                </div>
+               <select ng-model="objeSeleccionadoUser" ng-options="rol as usuario.Rol for usuario in listaUsuarios track by usuario.id">
+                  <option value="">* Elige tipo de usuario *</option>
+               </select> 
+                </p>
+               <input type="button" id="Ingreso" ng-disabled='formIngreso.$invalid' class="button" ng-Click="Alta()" name="Alta" value="Alta de usuario" />
+
             </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /.intro-header -->
-
-    <!-- Page Content -->
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- /.container -->
+</div>
+<!-- /.intro-header -->
+<!-- Page Content -->

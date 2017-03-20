@@ -177,3 +177,15 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+
+input[type="text"],input[type="password"],input[type="email"]{
+    width: 60%;
+  color:black;
+  height: 3em;
+  width: 26em;
+ padding: 20px;
+ border: 2px solid red;
+    border-radius: 4px;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+}

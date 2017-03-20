@@ -7,9 +7,11 @@ $usuario =json_decode($DatosPorPost);
 
 	$ClaveDeEncriptacion="usuario";
 	//$key = "1234";
-$token["id"]=$usuario->id;
-$token["usuario"]=$usuario->usuario;
-	$token["clave"]=$usuario->clave;
+$token["id"]=$usuario->ID;
+$token["usuario"]=$usuario->Usuario;
+$token["clave"]=$usuario->Clave;
+$token["rol"]=$usuario->Rol;
+
 
  
 	$token["iat"]=time();//momento de creacion

@@ -23,16 +23,15 @@ $app->get('/', function ($request, $response, $args) {
 
 
 
-$app->get('/usuarios/validar/{objeto}', function ($request, $response, $args) {
+$app->get('/usuarios/validar/{objeto}', function ($request, $response, $args){
  
- $usuario= json_decode($args['objeto']);
-   $validador = false;   
+  $usuario= json_decode($args['objeto']);
+   $validador = false;  
    $arrUsuarios = Usuario::TraerTodosLosUsuarios();
    foreach ($arrUsuarios as $user) {
         if($user->Usuario == $usuario->usuario)
             if($user->Clave == $usuario->clave)
                  $validador=true;
-   
    }
    echo  $validador;
 
@@ -80,7 +79,6 @@ $app->post('/usuarios/modificar/{objeto}', function ($request, $response, $args)
         
         $usuario=json_decode($args['objeto']);  
         
-         var_dump($usuario);
 
           return Usuario::ModificarUsuario($usuario); 
     
@@ -96,16 +94,6 @@ $usuario=json_decode($args['objeto']);
           return $response->write(Usuario::InsertarUsuario($usuario)); 
     
 });
-
-
-$app->post('/local/modificar/{objeto}', function ($request, $response, $args) {
-        
-        $local=json_decode($args['objeto']);  
-
-          return Local::ModificarLocal($local); 
-    
-});
-
 
 
 

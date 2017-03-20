@@ -38,12 +38,8 @@ factoryLoginABM.validarLogin(JSON.stringify($scope.usuario))
 
 factoryLoginABM.TraerObjeto(JSON.stringify($scope.usuario))
  		 	.then(function(respuesta) { 
- 		 		$scope.user = {};
- 		 		$scope.user.usuario = respuesta.Usuario;
- 		 		$scope.user.id= respuesta.ID;
- 		 		$scope.user.clave=respuesta.Clave;
-
-			$auth.login(JSON.stringify($scope.user))
+ 		 		console.info(respuesta);
+			$auth.login(respuesta)
 
   				.then(function(response) {
  			 		if($auth.isAuthenticated()){

@@ -4,41 +4,42 @@ class Usuario
 {
 //--------------------------------------------------------------------------------//
 //--ATRIBUTOS
-	public $id;
-	public $usuario;
- 	public $clave;
+	public $ID;
+	public $Usuario;
+ 	public $Clave;
+ 	public $Rol;
   	
 
 //--------------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------------//
 //--GETTERS Y SETTERS
-  	public function GetId()
+  	public function GetID()
 	{
-		return $this->id;
+		return $this->ID;
 	}
-	public function Getclave()
+	public function GetClave()
 	{
-		return $this->clave;
+		return $this->Clave;
 	}
-	public function Getusuario()
+	public function GetUsuario()
 	{
-		return $this->usuario;
+		return $this->Usuario;
 	}
 
 	
 
-	public function SetId($valor)
+	public function SetID($valor)
 	{
-		$this->id = $valor;
+		$this->ID = $valor;
 	}
-	public function Setclave($valor)
+	public function SetClave($valor)
 	{
-		$this->clave = $valor;
+		$this->Clave = $valor;
 	}
-	public function Setusuario($valor)
+	public function SetUsuario($valor)
 	{
-		$this->usuario = $valor;
+		$this->Usuario = $valor;
 	}
 	
 
@@ -84,11 +85,12 @@ class Usuario
 			$consulta =$objetoAccesoDato->RetornarConsulta("
 				update usuarios 
 				set usuario=:usuario,
-				WHERE id=:id");
+				rol=:rol;
+				WHERE ID=:id");
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-			$consulta->bindValue(':id',$usuario->id, PDO::PARAM_INT);
-			$consulta->bindValue(':nombre',$usuario->usuario, PDO::PARAM_STR);
-			$consulta->bindValue(':apellido', $usuario->clave, PDO::PARAM_STR);
+			$consulta->bindValue(':id',$usuario->ID, PDO::PARAM_INT);
+			$consulta->bindValue(':usuario',$usuario->Usuario, PDO::PARAM_STR);
+			$consulta->bindValue(':rol',$usuario->Rol, PDO::PARAM_STR);
 			return $consulta->execute();
 	}
 
