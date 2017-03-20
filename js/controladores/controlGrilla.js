@@ -71,6 +71,7 @@ function columADM () {
           { field: 'ID', name: 'ID',enableCellEdit: false},
 
         { field: 'Usuario', name: 'Usuario'},
+       { name: 'rol', name: 'Rol' },
         { width: 100, cellTemplate:"<button ng-Click='grid.appScope.Modificar(row.entity)'>MODIFICAR", name:"MODIFICAR",enableCellEdit: false
         },
         { width: 100, cellTemplate:"<button ng-Click='grid.appScope.Borrar(row.entity)'>BORRAR", name:"BORRAR",enableCellEdit: false

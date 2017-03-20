@@ -23,10 +23,9 @@ $scope.Desloguear = function(){
 	
   $scope.Alta=function(){
   
-   if ($scope.listaUsuarios == null)
-            return;
-console.info($scope.objeSeleccionadoUser);
-        $scope.usuario.rol = $scope.objeSeleccionadoUser.Rol;
+  
+$scope.usuario.rol = $scope.tipo;
+       
      
   	   factoryUsuario.Insertar(JSON.stringify($scope.usuario)) //+ JSON.stringify($scope.persona))
 			  .then(function(respuesta) {

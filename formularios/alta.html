@@ -41,9 +41,11 @@
                   <input type="password" value="" placeholder="ingrese clave" ng-model="usuario.clave" required  />
                </p>
                   <p>
-               <select ng-model="objeSeleccionadoUser" ng-options="rol as usuario.Rol for usuario in listaUsuarios track by usuario.id">
-                  <option value="">* Elige tipo de usuario *</option>
-               </select> 
+              <select name="singleSelect" ng-model="tipo">
+                  <option value="option-1">Elija un tipo de usuario *</option>
+                  <option value="admin">admin</option>
+                    <option value="operador">operador</option>
+             </select><br>
                 </p>
                <input type="button" id="Ingreso" ng-disabled='formIngreso.$invalid' class="button" ng-Click="Alta()" name="Alta" value="Alta de usuario" />
 

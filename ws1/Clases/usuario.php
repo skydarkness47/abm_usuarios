@@ -101,9 +101,10 @@ class Usuario
 	public static function InsertarUsuario($usuario)
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into usuarios (usuario,clave)values(:usuario,:clave)");
+		$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into usuarios (usuario,clave,rol)values(:usuario,:clave,:rol)");
 		$consulta->bindValue(':usuario',$usuario->usuario, PDO::PARAM_STR);
 		$consulta->bindValue(':clave', $usuario->clave, PDO::PARAM_STR);
+		$consulta->bindValue(':rol', $usuario->rol, PDO::PARAM_STR);
 		$consulta->execute();		
 		return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	
