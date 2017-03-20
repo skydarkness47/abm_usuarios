@@ -1,7 +1,7 @@
 miApp.service('factoryUsuario', function (Login,ABM,factoryRutas,Grilla) {
 objeto = {};
    objeto.nombre = "factory de login y abm";
-  objeto.InsertarLocal = InsertarLocal;
+  objeto.Insertar = Insertar;
 objeto.TraerTodosLosUsuarios=TraerTodosLosUsuarios;
 objeto.Borrar = Borrar;
 objeto.Modificar =Modificar;
@@ -10,14 +10,15 @@ objeto.Modificar =Modificar;
 
 
 
-  function InsertarLocal(parametro)
+  function Insertar(parametro)
   {
-    return ABM.InsertarLocal(parametro);
+    return ABM.Insertar(parametro);
 
   }
 
   function TraerTodosLosUsuarios()
   {
+      console.info(Grilla.TraerTodosLosUsuarios());
         return Grilla.TraerTodosLosUsuarios();
 
   }

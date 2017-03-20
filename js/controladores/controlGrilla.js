@@ -4,6 +4,13 @@ if($auth.isAuthenticated())
 $scope.user = $auth.getPayload();
 console.info($scope.user);
 
+$scope.Desloguear = function(){
+
+
+        $auth.logout();
+        alert("SE ESTA DESLOGUEANDO, SE REDIRECCIONARA AL INICIO");
+        $state.go("inicio");
+      }
 
  $scope.locales = {};
 $scope.Borrar = function(row){
@@ -19,7 +26,7 @@ factoryUsuario.Borrar(JSON.stringify(row.ID))
 }
 
 $scope.Modificar = function(row){
-factoryUsuario.Borrar(JSON.stringify(row))
+factoryUsuario.Modificar(JSON.stringify(row))
                 .then(function(respuesta) {
                   $scope.gridOptions.data= respuesta;
                     console.log(respuesta);
@@ -28,7 +35,6 @@ factoryUsuario.Borrar(JSON.stringify(row))
 
 
 }
-
 factoryUsuario.TraerTodosLosUsuarios().
 then(function(respuesta)
 {

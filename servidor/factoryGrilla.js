@@ -4,11 +4,8 @@ var objeto = {};
   objeto.borrar= borrar;
   objeto.TraerTodosUsuarios= TraerTodosUsuarios;
   objeto.borrarUsuario = borrarUsuario;
-  objeto.ModificarUsuario = ModificarUsuario;
-  objeto.borrarUsuario = borrarUsuario;
-  objeto.ModificarUsuario = ModificarUsuario;
-  objeto.TraerTodosLosClientes = TraerTodosLosClientes;
-  objeto.TraerClientesEmpleados = TraerClientesEmpleados;
+  objeto.Modificar = Modificar;
+
 
    return objeto;
 
@@ -24,15 +21,10 @@ var objeto = {};
       return  Grilla.borrar(obj);
    }
 
- function borrarUsuario(obj)
+   function Modificar(obj)
    {
  
-      return  Grilla.borrarUsuario(obj);
-   }
-   function ModificarUsuario(obj)
-   {
- 
-      return  Grilla.ModificarUsuario(obj);
+      return  Grilla.Modificar(obj);
    }
 
 
@@ -42,19 +34,5 @@ var objeto = {};
 
    }
 
-  function TraerTodosLosClientes()
-  {
-     return Grilla.TraerTodosLosClientes();
-  }
-   function ModificarUsuario(parametro)
-   {
-      return Grilla.ModificarUsuario(parametro);
-
-   }
-   function TraerClientesEmpleados()
-  {
-     return Grilla.TraerClientesEmpleados();
-  }
-
-   
+  
   })//cierro factory

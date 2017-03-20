@@ -6,7 +6,14 @@ $scope.authenticate = function(provider) {
       $auth.authenticate(provider);
     };
 
+$scope.Desloguear = function(){
 
+
+        $auth.logout();
+        alert("SE ESTA DESLOGUEANDO, SE REDIRECCIONARA AL INICIO");
+        $state.go("inicio");
+      }
+      
 if($auth.isAuthenticated())
 	console.info("Token",$auth.getPayload());
 else

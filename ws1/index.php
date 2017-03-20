@@ -66,7 +66,7 @@ $usuarioBuscado=Usuario::TraerUnUsuario($user);
  
 });
 
-$app->delete('/user/borrar/{objeto}', function ($request, $response, $args) {
+$app->delete('/usuarios/borrar/{objeto}', function ($request, $response, $args) {
         
         $usuario=json_decode($args['objeto']);  
         
@@ -87,64 +87,16 @@ $app->post('/usuarios/modificar/{objeto}', function ($request, $response, $args)
 });
 
 
-$app->post('/archivos', function ($request, $response, $args) {
-    
-    if ( !empty( $_FILES ) ) {
-    $tempPath = $_FILES[ 'file' ][ 'tmp_name' ];
-    $uploadPath = "fotos" . DIRECTORY_SEPARATOR . $_FILES[ 'file' ][ 'name' ];
-    move_uploaded_file( $tempPath, $uploadPath );
-    $answer = array( 'answer' => 'File transfer completed' );
-    $json = json_encode( $answer );
-} else {
-    echo 'No files';
-}
-    return $response;
-});
-
-
-$app->get('/locales', function ($request, $response, $args) {
-
- 
-   $arrAdmin = Local::TraerTodasLosLocales();
-
-
-   
-   return json_encode($arrAdmin);
-
-
-});
 
 /* POST: Para crear recursos */
-$app->get('/local/alta/{objeto}', function ($request, $response, $args) {
+$app->put('/usuarios/alta/{objeto}', function ($request, $response, $args) {
 
-$local=json_decode($args['objeto']);
-    $local->foto_local=explode(';',$local->foto_local);
-    $arrayFoto = array();
-    if(count($local->foto_local) > 0){
-        for ($i = 0; $i < count($local->foto_local); $i++ ){
-            $rutaVieja="fotos/".$local->foto_local[$i];
-            $rutaNueva=$local->nombre_local. "_". $i .".".PATHINFO($rutaVieja, PATHINFO_EXTENSION);
-            copy($rutaVieja, "fotos/".$rutaNueva);
-            unlink($rutaVieja);
-            $arrayFoto[]='http://localhost:8080/pizzeriaTP/ws1/fotos/'.$rutaNueva;
-        } 
-
-        $local->foto_local=json_encode($arrayFoto); 
-
-    }
-          return $response->write(Local::InsertarLocal($local)); 
+$usuario=json_decode($args['objeto']);
+   
+          return $response->write(Usuario::InsertarUsuario($usuario)); 
     
 });
 
-$app->delete('/local/BorrarLocal/{objeto}', function ($request, $response, $args) {
-        
-        $local=json_decode($args['objeto']);  
-        
-
-
-          return Local::BorrarLocal($local); 
-    
-});
 
 $app->post('/local/modificar/{objeto}', function ($request, $response, $args) {
         
@@ -154,83 +106,9 @@ $app->post('/local/modificar/{objeto}', function ($request, $response, $args) {
     
 });
 
-$app->post('/usuarios/alta/{objeto}', function ($request, $response, $args) {
-
-          return $response->write(Usuario::Insertar(json_decode($args['objeto']))); 
-    
-});
-
-$app->get('/producto', function ($request, $response, $args) {
-
-
-          return json_encode(Pizza::TraerTodasLasPizzas()); 
-    
-});
 
 
 
-$app->post('/producto/alta/{objeto}', function ($request, $response, $args) {
-
-$pizza=json_decode($args['objeto']);
-    $pizza->foto_pizza=explode(';',$pizza->foto_pizza);
-    $arrayFoto = array();
-    if(count($pizza->foto_pizza) > 0){
-        for ($i = 0; $i < count($pizza->foto_pizza); $i++ ){
-            $rutaVieja="fotos/".$pizza->foto_pizza[$i];
-            $rutaNueva=$pizza->descripcion_pizza. "_". $i .".".PATHINFO($rutaVieja, PATHINFO_EXTENSION);
-            copy($rutaVieja, "fotos/".$rutaNueva);
-            unlink($rutaVieja);
-            $arrayFoto[]="http://localhost:8080/pizzeriaTP/ws1/fotos/".$rutaNueva;
-        } 
-
-        $pizza->foto_pizza=json_encode($arrayFoto); 
-
-    }
-          return $response->write(Pizza::InsertarPizza($pizza)); 
-    
-});
-
-
-$app->post('/promocion/{objeto}', function ($request, $response, $args) {
-
-$promocion=json_decode($args['objeto']);
-
-          return $response->write(Promocion::InsertarPromocion($promocion)); 
-    
-});
-
-$app->get('/promociones', function ($request, $response, $args) {
-
-          return json_encode(Promocion::TraerTodasLasPromociones()); 
-    
-});
-
-$app->get('/clientes', function ($request, $response, $args) {
-
-          return json_encode(Usuario::TraerTodosLosClientes()); 
-    
-});
-
-
-$app->get('/clientesEmpleados', function ($request, $response, $args) {
-
-          return json_encode(Usuario::TraerClientesEmpleados()); 
-    
-});
-$app->get('/pedidos/alta/{objeto}', function ($request, $response, $args) {
-
-$promocion=json_decode($args['objeto']);
-var_dump($promocion);
-
-          return $response->write(Pedido::InsertarPedido($promocion)); 
-    
-});
-
-$app->get('/pedidos', function ($request, $response, $args) {
-
-          return json_encode(Pedido::TraerTodosLosPedidos()); 
-    
-});
 
 
 

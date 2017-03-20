@@ -5,10 +5,8 @@ var Url = factoryRutas.ApiUrl;
 
   this.Insertar = Insertar;
   function Insertar(objeto){
-console.log(objeto);
-    return $http.post(Url + "usuarios/alta/"+ objeto)
+    return $http.put(Url + "usuarios/alta/"+ objeto)
       .then(function(respuesta) {
-      console.info(respuesta); 
        return respuesta.data
 
     })      // FIN DEL RETURN
@@ -27,99 +25,32 @@ console.log(objeto);
 
     }
 
+  
    this.Borrar = Borrar;
    function Borrar(id){
     console.info(id);
-    return $http.delete(Url + "user/borrar/" + id) 
+    return $http.delete(Url + "usuarios/borrar/" + id) 
     .then(function(respuesta) {
       console.info(respuesta);
       return Grilla.TraerTodosLosUsuarios();
     });
    };
 
-    this.BorrarObjeto = BorrarObjeto;
 
-   function BorrarObjeto(id){
-    console.info(id);
-    return $http.delete(Url + "personas/" + id) 
-    .then(function(respuesta) {
-      return TraerTodos();
-    });
-   };
-
-   
-  this.InsertarLocal = InsertarLocal;
-  function InsertarLocal(objeto){
-    return $http.get(Url + "local/alta/"+ objeto)
-      .then(function(respuesta) {
-      console.info(respuesta); 
-       return respuesta.data
-
-    })      // FIN DEL RETURN
-
-
-  }//FIN IF QUE TRAER CLIENTES
-
-
- this.InsertarProducto = InsertarProducto;
-  function InsertarProducto(objeto){
-    return $http.post(Url + "producto/alta/"+ objeto)
-      .then(function(respuesta) {
-      console.info(respuesta); 
-       return respuesta.data
-
-    })      // FIN DEL RETURN
-
-
-  }//FIN IF QUE TRAER CLIENTES
-
-   this.TraerTodosProductos = TraerTodosProductos;
-  function TraerTodosProductos(){
-    return $http.get(Url + "producto")
-      .then(function(respuesta) {
-       return respuesta.data
-
-    })      // FIN DEL RETURN
-
-
-  }//FIN IF QUE TRAER CLIENTES
-
-  this.InsertarPromocion = InsertarPromocion;
-  function InsertarPromocion(obj){
-    return $http.post(Url + "promocion/" + obj)
-      .then(function(respuesta) {
-       return respuesta.data
-
-    })      // FIN DEL RETURN
-
-
-  }//FIN IF QUE TRAER CLIENTES
-
-   this.InsertarPedido = InsertarPedido;
-  function InsertarPedido(objeto){
+  this.Modificar = Modificar;
+  function Modificar(objeto){
     console.info(objeto);
-    return $http.get(Url + "pedidos/alta/"+ objeto)
+    return $http.post(Url + "usuarios/modificar/"+ objeto)
       .then(function(respuesta) {
       console.info(respuesta); 
        return respuesta.data
 
     })      // FIN DEL RETURN
 
+};
 
-  }//FIN IF QUE TRAER CLIENTE
+
   
- this.ModificarLocal = ModificarLocal;
-  function ModificarLocal(objeto){
-    console.info(objeto);
-    return $http.post(Url + "local/modificar/"+ objeto)
-      .then(function(respuesta) {
-      console.info(respuesta); 
-       return respuesta.data
 
-    })      // FIN DEL RETURN
-
-
-  }//FIN IF QUE TRAER CLIENTE
-  
 
   })

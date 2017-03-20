@@ -1,6 +1,6 @@
 miApp.config(function($stateProvider,$urlRouterProvider,$authProvider){
 
-$authProvider.loginUrl = 'ABM_PERSONA-master/servidor/jwt/php/auth.php';
+$authProvider.loginUrl = 'abm_usuarios/servidor/jwt/php/auth.php';
 $authProvider.signupUrl = '/auth/signup';
 $authProvider.unlinkUrl = '/auth/unlink/';
 $authProvider.tokenName = 'usuario';
@@ -37,11 +37,20 @@ $stateProvider
 				}
 			}).state(
 			"menu.login",{
-				url:"/menuLogin",
+				url:"/login",
 				views: {
 					"menu":{
 					templateUrl:"./formularios/login.html",
 					controller:"controlLogin"
+						}
+				}
+			}).state(
+			"menu.alta",{
+				url:"/alta",
+				views: {
+					"menu":{
+					templateUrl:"./formularios/alta.html",
+					controller:"controlAlta"
 						}
 				}
 			})

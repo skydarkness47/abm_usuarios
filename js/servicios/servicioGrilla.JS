@@ -7,6 +7,7 @@ var Url = factoryRutas.ApiUrl;
 
     return $http.get(Url + 'usuarios')
       .then(function(respuesta) { 
+        console.info(respuesta);
        return respuesta.data
 
     });// FIN DEL RETURN

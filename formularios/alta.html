@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                  
-                    <li>
+                   <li>
                            <a ng-Click="Desloguear()">Deslogueo</a>
                     </li>
 
@@ -48,18 +48,16 @@
             <div class="row">
                 <div >
                     <div class="intro-message">
-
-                     <h1 style="color: #F7E9E6">GRILLA DE USUARIOS</h1>
- <div ui-grid="gridOptions" class="myGrid" 
-    ui-grid-pagination
-    ui-grid-resize-columns
-     ui-grid-cellNav 
-    ui-grid-edit 
-    ui-grid-row-edit
-    >
-    </div>                            
-             
-                  
+                  <p>
+                     <h1 style="color: #F7E9E6">ALTA DE USUARIO</h1>
+                      
+        <input type="text" value="" placeholder="ingrese usuario" ng-model="usuario.usuario" required />
+        </p>
+         <p>
+        <input type="password" value="" placeholder="ingrese clave" ng-model="usuario.clave" required  />
+        </p>
+        <input type="button" id="Ingreso" ng-disabled='formIngreso.$invalid' class="button" ng-Click="Alta()" name="Alta" value="ingreso" />
+        </div>
                         </ul>
                     </div>
                 </div>

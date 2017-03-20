@@ -54,7 +54,7 @@ class Usuario
 		$consulta =$objetoAccesoDato->RetornarConsulta("select * from usuarios where Usuario =:usuario");
 		$consulta->bindValue(':usuario', $usuario, PDO::PARAM_STR);
 		$consulta->execute();
-		$usuarioBuscado= $consulta->fetchObject('usuario');
+		$usuarioBuscado= $consulta->fetchObject('Usuario');
 		return $usuarioBuscado;	
 					
 	}
@@ -64,7 +64,7 @@ class Usuario
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 		$consulta =$objetoAccesoDato->RetornarConsulta("select * from usuarios");
 		$consulta->execute();			
-		$arrUsuarios= $consulta->fetchAll(PDO::FETCH_CLASS, "usuario");	
+		$arrUsuarios= $consulta->fetchAll(PDO::FETCH_CLASS, "Usuario");	
 		return $arrUsuarios;
 	}
 	
@@ -78,21 +78,17 @@ class Usuario
 		
 	}
 	
-	public static function ModificarPersona($persona)
+	public static function ModificarUsuario($usuario)
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			/*$consulta =$objetoAccesoDato->RetornarConsulta("
-				update persona 
-				set nombre=:nombre,
-				apellido=:apellido,
-				foto=:foto
+			$consulta =$objetoAccesoDato->RetornarConsulta("
+				update usuarios 
+				set usuario=:usuario,
 				WHERE id=:id");
-			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();*/ 
-			$consulta =$objetoAccesoDato->RetornarConsulta("CALL ModificarPersona(:id,:nombre,:apellido,:foto)");
-			$consulta->bindValue(':id',$persona->id, PDO::PARAM_INT);
-			$consulta->bindValue(':nombre',$persona->nombre, PDO::PARAM_STR);
-			$consulta->bindValue(':apellido', $persona->apellido, PDO::PARAM_STR);
-			$consulta->bindValue(':foto', $persona->foto, PDO::PARAM_STR);
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+			$consulta->bindValue(':id',$usuario->id, PDO::PARAM_INT);
+			$consulta->bindValue(':nombre',$usuario->usuario, PDO::PARAM_STR);
+			$consulta->bindValue(':apellido', $usuario->clave, PDO::PARAM_STR);
 			return $consulta->execute();
 	}
 
@@ -100,15 +96,12 @@ class Usuario
 
 //--------------------------------------------------------------------------------//
 
-	public static function InsertarPersona($persona)
+	public static function InsertarUsuario($usuario)
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		//$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into persona (nombre,apellido,dni,foto)values(:nombre,:apellido,:dni,:foto)");
-		$consulta =$objetoAccesoDato->RetornarConsulta("CALL InsertarPersona (:nombre,:apellido,:dni,:foto)");
-		$consulta->bindValue(':nombre',$persona->nombre, PDO::PARAM_STR);
-		$consulta->bindValue(':apellido', $persona->apellido, PDO::PARAM_STR);
-		$consulta->bindValue(':dni', $persona->dni, PDO::PARAM_STR);
-		$consulta->bindValue(':foto', $persona->foto, PDO::PARAM_STR);
+		$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into usuarios (usuario,clave)values(:usuario,:clave)");
+		$consulta->bindValue(':usuario',$usuario->usuario, PDO::PARAM_STR);
+		$consulta->bindValue(':clave', $usuario->clave, PDO::PARAM_STR);
 		$consulta->execute();		
 		return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	
