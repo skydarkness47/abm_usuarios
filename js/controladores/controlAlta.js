@@ -2,7 +2,12 @@ miApp.controller("controlAlta",function($scope,$auth,$state,factoryUsuario){
 	
 //inicio las variables
     if($auth.isAuthenticated())
-$scope.user = $auth.getPayload();
+    {
+      $scope.user = $auth.getPayload();
+    }else if(!($auth.isAuthenticated())){
+      $state.go("inicio");
+    }
+
  $scope.usuario ={};
 console.info($scope.user);
 

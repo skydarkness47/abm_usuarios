@@ -85,7 +85,7 @@ class Usuario
 			$consulta =$objetoAccesoDato->RetornarConsulta("
 				update usuarios 
 				set usuario=:usuario,
-				rol=:rol;
+				rol=:rol
 				WHERE ID=:id");
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
 			$consulta->bindValue(':id',$usuario->ID, PDO::PARAM_INT);

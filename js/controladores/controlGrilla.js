@@ -1,8 +1,11 @@
 miApp.controller('controlGrilla', function($scope, $state,i18nService, uiGridConstants,$auth,factoryUsuario) {
 
-if($auth.isAuthenticated())
-$scope.user = $auth.getPayload();
-console.info($scope.user);
+   if($auth.isAuthenticated())
+    {
+      $scope.user = $auth.getPayload();
+    }else if(!($auth.isAuthenticated())){
+      $state.go("inicio");
+    }
 
 $scope.Desloguear = function(){
 

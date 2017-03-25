@@ -15,7 +15,7 @@ $token["rol"]=$usuario->Rol;
 
  
 	$token["iat"]=time();//momento de creacion
-	$token["exp"]=time() + 20000000;
+	$token["exp"]=time() + 300;
 	$jwt = JWT::encode($token, $ClaveDeEncriptacion);
 
 
